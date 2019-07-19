@@ -12,6 +12,7 @@ token=data1.data_token()
 bot = telebot.TeleBot(token)
 ########################################################
 #admin = 123
+#bot_id = 706930638
 @bot.message_handler(content_types=['new_chat_members'])
 def welcome_chat(message : Message):
     global id_new_member
@@ -24,11 +25,14 @@ def welcome_chat(message : Message):
     chat_id = message.chat.id
     name_new_member = message.new_chat_member.first_name
     id_new_member = message.new_chat_member.id
-    bot.send_message(chat_id,'{0}, добро пожаловать в клуб предпринимателей Life&Business'.format(name_new_member))
-    time.sleep(1)
-    msg = bot.send_message(chat_id, '{0}, расскажи о себе и ответь на 3 вопроса:\n1.Каковы твои достижения?'.format(name_new_member))
-    kol_soob+=1
-    bot.register_next_step_handler(msg, Vopros_2)
+    if(id_new_member == 706930638):
+            pass
+    else:
+        bot.send_message(chat_id,'{0}, добро пожаловать в клуб предпринимателей Life&Business'.format(name_new_member))
+        time.sleep(1)
+        msg = bot.send_message(chat_id, '{0}, расскажи о себе и ответь на 3 вопроса:\n1.Каковы твои достижения?'.format(name_new_member))
+        kol_soob+=1
+        bot.register_next_step_handler(msg, Vopros_2)
 @bot.message_handler(content_types = ['text'])
 def raz(Message):
     global kol_soob
