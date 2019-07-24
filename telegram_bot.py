@@ -4,9 +4,9 @@ import time
 #import random
 #import requests
 import telebot
-from telebot import apihelper
+#from telebot import apihelper
 from telebot.types import Message
-apihelper.proxy = {"https": "socks5://127.0.0.1:9150"}
+#apihelper.proxy = {"https": "socks5://127.0.0.1:9150"}
 token=data1.data_token()
 #print(token)
 bot = telebot.TeleBot(token)
